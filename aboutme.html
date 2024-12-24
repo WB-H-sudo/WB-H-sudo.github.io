@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Biography</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 80%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: row;
+            animation: slideIn 1.5s ease-out;
+        }
+        .profile {
+            flex: 1;
+            background: url('https://via.placeholder.com/300') no-repeat center/cover;
+        }
+        .details {
+            flex: 2;
+            padding: 20px;
+        }
+        .details h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #ff7e5f;
+        }
+        .details h2 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #feb47b;
+        }
+        .details p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="profile"></div>
+        <div class="details">
+            <h1>WenBin Hsieh</h1>
+            <h2>Assistant Professor</h2>
+            <p>
+                Wen-Bin Hsieh earned his Ph.D. in 2013 from the National Taiwan University of Science and Technology. With over a decade of experience supporting government initiatives in information security and cryptography, he previously served as an assistant professor in the Department of Computer Science & Information Engineering and the Innovation Frontier Institute at National Taipei University of Technology. Currently, he is an assistant professor in the Department of Green Energy and Information Technology at National Taitung University. His research interests encompass machine learning, financial technology, communication protocols, network security, and mobile communications. 
+            </p>
+        </div>
+    </div>
+</body>
+</html>
