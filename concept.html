@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuzziness, Anonymity, and Indistinguishability of a KEM</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .panel {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .left-panel {
+            background-color: #2c3e50;
+            color: white;
+            border-right: 2px solid #34495e;
+            width: 250px;
+        }
+
+        .left-panel h2 {
+            font-size: 1.8em;
+            color: #ecf0f1;
+        }
+
+        .definition {
+            padding: 10px;
+            cursor: pointer;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #2980b9;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .definition:hover {
+            background-color: #3498db;
+        }
+
+        .right-panel {
+            background-color: white;
+            color: #333;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 5px;
+            margin-left: 20px;
+            max-width: 70%;
+            overflow-y: auto;
+        }
+
+        .right-panel h2 {
+            color: #2980b9;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #7f8c8d;
+            border-left: 4px solid #2980b9;
+            padding-left: 20px;
+            margin-left: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #2c3e50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="panel left-panel">
+            <h2>Sec. Properties</h2>
+            <div class="definition" onclick="showDetails('indistinguishability')">
+                <strong>Def. 1</strong>: Indistinguishability
+            </div>            
+            <div class="definition" onclick="showDetails('fuzziness')">
+                <strong>Def. 2</strong>: Fuzziness of KEM
+            </div>
+            <div class="definition" onclick="showDetails('anonymity')">
+                <strong>Def. 3</strong>: Anonymity of KEM
+            </div>
+        </div>
+        <div class="panel right-panel" id="detailPanel">
+            <h2>Fuzziness of a Key Encapsulation Mechanism (KEM)</h2>
+            <p>Fuzziness is specified as a measure of the properties of the public key distribution in a Key Encapsulation Mechanism (KEM). It refers to how difficult it is for an adversary to distinguish the distribution of public keys from the uniform distribution.</p>
+            <p class="quote">"If the distribution of public keys cannot be computationally distinguished from the uniform distribution, the KEM is said to be fuzzy." [15, 16]</p>
+            <p>This definition highlights the importance of indistinguishability in the KEM, which ensures the security of the system by making it resistant to attacks that attempt to exploit non-random patterns in the public key distribution. If the adversary cannot distinguish the real public key distribution from a completely random one, the system is considered "fuzzy," thus ensuring its robustness.</p>
+            <p>Fuzziness contributes to stronger cryptographic guarantees and prevents potential weaknesses in the system from being easily detected by attackers.</p>
+        </div>
+    </div>
+
+    <footer style="background-color: darkgreen">
+        <p>&copy; 2025 Cryptography Concepts. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showDetails(definition) {
+            const fuzziness = `
+                <h2>Fuzziness of a Key Encapsulation Mechanism (KEM)</h2>
+                <p>Fuzziness is specified as a measure of the properties of the public key distribution in a Key Encapsulation Mechanism (KEM). It refers to how difficult it is for an adversary to distinguish the distribution of public keys from the uniform distribution.</p>
+                <p class="quote">"If the distribution of public keys cannot be computationally distinguished from the uniform distribution, the KEM is said to be fuzzy." [1, 2]</p>
+                <p>This definition highlights the importance of indistinguishability in the KEM, which ensures the security of the system by making it resistant to attacks that attempt to exploit non-random patterns in the public key distribution. If the adversary cannot distinguish the real public key distribution from a completely random one, the system is considered "fuzzy," thus ensuring its robustness.</p>
+                <p>Fuzziness contributes to stronger cryptographic guarantees and prevents potential weaknesses in the system from being easily detected by attackers.</p>
+                <p>References:</p>
+                <ul>
+                  <li>[1] Pan, J., Zeng, R. (2023, December). A generic construction of tightly secure password-based authenticated key exchange. In <em>International Conference on the Theory and Application of Cryptology and Information Security</em> (pp. 143-175). Singapore: Springer Nature Singapore.</li>
+                  <li>[2] Beguinet, H., Chevalier, C., Pointcheval, D., Ricosset, T., Rossi, M. (2023, May). GeT a CAKE: Generic Transformations from Key Encapsulation Mechanisms to Password Authenticated Key Exchanges. In <em>International Conference on Applied Cryptography and Network Security</em> (pp. 516-538). Cham: Springer Nature Switzerland.</li>
+                </ul>
+            `;
+            const anonymity = `
+                <h2>Anonymity of a Key Encapsulation Mechanism (KEM)</h2>
+                <p>Anonymity of a KEM is defined by analyzing the randomness of the ciphertext distribution. It ensures that the encapsulated ciphertexts do not reveal any information about the underlying data. Specifically, if the ciphertext distribution obtained by the encapsulation function of the KEM scheme is computationally indistinguishable from the uniform ciphertext distribution, it satisfies the anonymity property.</p>
+                <p class="quote">"If the ciphertext distribution obtained by the encapsulation function of the KEM scheme is computationally indistinguishable from the uniform ciphertext distribution, it satisfies the anonymity property." [1, 2]</p>
+                <p>This means that an adversary should not be able to distinguish between different ciphertexts produced by the encapsulation function, even if they are aware of some parts of the scheme. The more indistinguishable the ciphertext distribution is from random noise, the stronger the anonymity property of the KEM.</p>
+                <p>References:</p>
+                <ul>
+                  <li>[1] Pan, J., Zeng, R. (2023, December). A generic construction of tightly secure password-based authenticated key exchange. In <em>International Conference on the Theory and Application of Cryptology and Information Security</em> (pp. 143-175). Singapore: Springer Nature Singapore.</li>
+                  <li>[2] Beguinet, H., Chevalier, C., Pointcheval, D., Ricosset, T., Rossi, M. (2023, May). GeT a CAKE: Generic Transformations from Key Encapsulation Mechanisms to Password Authenticated Key Exchanges. In <em>International Conference on Applied Cryptography and Network Security</em> (pp. 516-538). Cham: Springer Nature Switzerland.</li>
+                </ul>
+            `;
+            const indistinguishability = `
+                <h2>Indistinguishability</h2>
+                <p>Indistinguishability is a concept used in cryptography to describe the situation where two distributions, objects, or events cannot be distinguished by an adversary. In the context of cryptographic protocols, it often refers to the inability of an attacker to distinguish between two different scenarios, distributions, or keys with significant probability.</p>
+                <p class="quote">"If no efficient algorithm can distinguish between two distributions or events with a probability significantly greater than random guessing, those distributions or events are considered indistinguishable."</p>
+                <p>In KEMs, indistinguishability is important for ensuring the security of the system. It ensures that an adversary cannot distinguish between different public keys, ciphertexts, or encryption outcomes, which is critical for preventing attacks such as chosen ciphertext attacks or key-recovery attacks.</p>
+            `;
+            
+            const detailPanel = document.getElementById('detailPanel');
+            if (definition === 'fuzziness') {
+                detailPanel.innerHTML = fuzziness;
+            } else if (definition === 'anonymity') {
+                detailPanel.innerHTML = anonymity;
+            } else if (definition === 'indistinguishability') {
+                detailPanel.innerHTML = indistinguishability;
+            }
+        }
+    </script>
+</body>
+</html>
