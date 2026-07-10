@@ -169,9 +169,46 @@
                 activeTab.classList.add('active');
             }
         }
-        fetch("visitor.php")
-        .then(response => console.log("visitor logged"))
-        .catch(error => console.log(error));
+        window.onload = function(){
+
+    let visitorData = {
+
+        time: new Date().toLocaleString(),
+
+        page: window.location.href,
+
+        browser: navigator.userAgent,
+
+        language: navigator.language,
+
+        platform: navigator.platform,
+
+        referrer: document.referrer
+
+    };
+
+
+    fetch(
+    "https://script.google.com/macros/s/AKfycbyg2kVxoV9Yr4VcTdJu2ZM5hN6S3-2_J3VaejvadKaI4LEXY8h_GEe2Q5ijGR58QMTR7Q/exec",
+    {
+
+        method:"POST",
+
+        mode:"no-cors",
+
+        headers:
+        {
+            "Content-Type":"application/json"
+        },
+
+        body:
+        JSON.stringify(visitorData)
+
+    });
+
+
+};
+
     </script>
 </head>
 <body>
