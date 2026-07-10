@@ -169,6 +169,9 @@
                 activeTab.classList.add('active');
             }
         }
+        fetch("visitor.php")
+        .then(response => console.log("visitor recorded"))
+        .catch(error => console.log(error));
     </script>
 </head>
 <body>
