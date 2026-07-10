@@ -169,46 +169,79 @@
                 activeTab.classList.add('active');
             }
         }
-        window.onload = function(){
-
-    let visitorData = {
-
-        time: new Date().toLocaleString(),
-
-        page: window.location.href,
-
-        browser: navigator.userAgent,
-
-        language: navigator.language,
-
-        platform: navigator.platform,
-
-        referrer: document.referrer
-
-    };
+ window.onload=function(){
 
 
-    fetch(
-    "https://script.google.com/macros/s/AKfycbyg2kVxoV9Yr4VcTdJu2ZM5hN6S3-2_J3VaejvadKaI4LEXY8h_GEe2Q5ijGR58QMTR7Q/exec",
-    {
+let visitor={
 
-        method:"POST",
 
-        mode:"no-cors",
+time:
+new Date().toLocaleString(),
 
-        headers:
-        {
-            "Content-Type":"application/json"
-        },
 
-        body:
-        JSON.stringify(visitorData)
+page:
+window.location.href,
 
-    });
+
+browser:
+navigator.userAgent,
+
+
+os:
+navigator.platform,
+
+
+screen:
+screen.width+"x"+screen.height,
+
+
+language:
+navigator.language,
+
+
+timezone:
+Intl.DateTimeFormat()
+.resolvedOptions()
+.timeZone,
+
+
+referrer:
+document.referrer
 
 
 };
 
+fetch(
+
+"https://script.google.com/macros/s/AKfycbyg2kVxoV9Yr4VcTdJu2ZM5hN6S3-2_J3VaejvadKaI4LEXY8h_GEe2Q5ijGR58QMTR7Q/exec",
+
+{
+
+
+method:"POST",
+
+mode:"no-cors",
+
+
+headers:{
+
+
+"Content-Type":
+"application/json"
+
+},
+
+
+body:
+JSON.stringify(visitor)
+
+
+}
+
+);
+
+
+};
     </script>
 </head>
 <body>
